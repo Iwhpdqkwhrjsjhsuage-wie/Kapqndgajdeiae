@@ -891,6 +891,7 @@ local Toggle = Tabs.Main:AddToggle("Avoid Monster V1",
             end
             v.Destroying:Wait()
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldpos
+						end
         end)
       end
       if state == false then
