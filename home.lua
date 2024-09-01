@@ -102,7 +102,7 @@ local function autostore()
           task.wait(0.1)
         end
       end
-      if v:FindFirstChild("GasCan") == nil and v.Name == "GasCans" then
+      if v:FindFirstChild("GasCan") ~= nil and v.Name == "GasCans" then
         if workspace.Game.Baggage["Gas Cans"].Value == 13 then
           plyr.CFrame = CFrame.new(-123.511528, 5.25002241, 27.6424961, -0.00102992344, -1.04728656e-07, 0.999999464, 2.09537383e-08, 1, 1.04750292e-07, -0.999999464, 2.10616111e-08, -0.00102992344)
           task.wait(0.2)
