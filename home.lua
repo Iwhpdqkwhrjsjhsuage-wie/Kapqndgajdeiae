@@ -241,6 +241,7 @@ local Toggle = Tabs.Main:AddToggle("Auto Store",
     Default = false,
     Callback = function(state)
       if state == true then
+        getgenv().BreakLoop = false
         autostore()
       end
       if state == false then
