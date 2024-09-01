@@ -267,7 +267,6 @@ local Toggle = Tabs.Main:AddToggle("Instant Interact",
       end
       if state == false then
         getgenv().BreakLoopGate = true
-        print("SUSSY BAKA")
       end
     end 
 })
@@ -303,7 +302,8 @@ local Toggle = Tabs.Main:AddToggle("Auto Repair Broken Window",
           if getgenv().BreakLoopWindow == true then
             break
           end
-        end          
+        end
+      end        
       if state == false then
         getgenv().BreakLoopWindow = true
       end
