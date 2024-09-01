@@ -40,8 +40,8 @@ local function autostore()
     task.wait(0.04)
     local store = coroutine.create(function()
       local plyr = game.Players.LocalPlayer.Character.HumanoidRootPart
-      for i, v in pairs(workspace.House.GasCans:GetChildren()) do
-        if v.GasCan ~= nil then
+      for i, v in pairs(workspace.House:GetDescendants()) do
+        if v:FindFirstChild("GasCan") ~= nil then
           plyr.CFrame = CFrame.new(-123.511528, 5.25002241, 27.6424961, -0.00102992344, -1.04728656e-07, 0.999999464, 2.09537383e-08, 1, 1.04750292e-07, -0.999999464, 2.10616111e-08, -0.00102992344)
           task.wait(0.2)
           fireproximityprompt(workspace.House.Spares["Shelf with Drinks"].Primary.ProximityPrompt)
@@ -100,7 +100,8 @@ local function autostore()
           task.wait(0.2)
           fireproximityprompt(workspace.Game.Baggage.Store)
           task.wait(0.1)
-        elseif v.GasCan == nil then
+        end
+        if v:FindFirstChild("GasCan") == nil then
           plyr.CFrame = CFrame.new(-123.511528, 5.25002241, 27.6424961, -0.00102992344, -1.04728656e-07, 0.999999464, 2.09537383e-08, 1, 1.04750292e-07, -0.999999464, 2.10616111e-08, -0.00102992344)
           task.wait(0.2)
           fireproximityprompt(workspace.House.Spares["Shelf with Drinks"].Primary.ProximityPrompt)
