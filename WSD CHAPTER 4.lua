@@ -69,8 +69,7 @@ local function drink()
   getgenv().Active = true
   local old = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
   rootpart.CFrame = CFrame.new(160.213379, 192.0858, 116.197739, -0.181649685, 4.62826533e-09, -0.98336333, 2.58541855e-09, 1, 4.22898072e-09, 0.98336333, -1.77421289e-09, -0.181649685)
-  task.wait(0.2)
-  if game.Players.LocalPlayer.Backpack["Drinking Glass"] == nil then
+  if game.Players.LocalPlayer.Backpack:FindFirstChild("Drinking Glass") == nil or game.Players.LocalPlayer.Backpack:FindFirstChild("Water of Glass") == nil then
     fireproximityprompt(workspace.Foodies["Shelf with Drinks"].Primary.ProximityPrompt)
     task.wait(0.2)
     fireproximityprompt(workspace.Foodies.WaterDispenser.Primary.ProximityPrompt)
@@ -79,7 +78,7 @@ local function drink()
     task.wait(0.1)
     rootpart.CFrame = old
   end
-  if game.Players.LocalPlayer.Backpack["Drinking Glass"] ~= nil then
+  if game.Players.LocalPlayer.Backpack:FindFirstChild("Drinking Glass") ~= nil or game.Players.LocalPlayer.Backpack:FindFirstChild("Water of Glass") ~= nil then
     fireproximityprompt(workspace.Foodies.WaterDispenser.Primary.ProximityPrompt)
     task.wait(0.2)
     game:GetService("VirtualUser"):ClickButton1(Vector2.new(9e9, 9e9))
@@ -342,7 +341,7 @@ local Toggle = Tabs.Main:AddToggle("Auto Drink",
         if state == true then
           while wait() do
             task.wait(0.4)
-            if getgenv().Active == false and game.Players.LocalPlayer.Thirst.Value <= 50 then
+            if getgenv().Active == false and workspace.Game.PossesedMom.ChaseDoor.Value == false and game.Players.LocalPlayer.Thirst.Value <= 50 then
               drink()
             end
             if getgenv().BreakLoopAutoDrink == true then
@@ -365,7 +364,7 @@ local Toggle = Tabs.Main:AddToggle("Auto Eat",
         if state == true then
           while wait() do
             task.wait(0.5)
-            if getgenv().Active == false and game.Players.LocalPlayer.Hunger.Value <= 50 then
+            if getgenv().Active == false and workspace.Game.PossesedMom.ChaseDoor.Value == false and game.Players.LocalPlayer.Hunger.Value <= 50 then
               eat()
             end
             if getgenv().BreakLoopAutoEat == true then
@@ -388,7 +387,7 @@ local Toggle = Tabs.Main:AddToggle("Auto Fill Generator",
         if state == true then
           while wait() do
             task.wait(0.3)
-            if getgenv().Active == false and workspace.Generator.Bar.Value <= 10 then
+            if getgenv().Active == false and workspace.Game.PossesedMom.ChaseDoor.Value == false and workspace.Generator.Bar.Value <= 10 then
               generator()
             end
             if getgenv().BreakLoopAutoFillGenerator == true then
