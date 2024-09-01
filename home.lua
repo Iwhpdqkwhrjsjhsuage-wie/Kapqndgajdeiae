@@ -38,109 +38,118 @@ local function autostore()
   while wait() do
     local plyr = game.Players.LocalPlayer.Character.HumanoidRootPart
     for i, v in pairs(workspace.House:GetDescendants()) do
-      if v:FindFirstChild("GasCan") ~= nil and v.Name == "GasCans" then    
-        plyr.CFrame = CFrame.new(-123.511528, 5.25002241, 27.6424961, -0.00102992344, -1.04728656e-07, 0.999999464, 2.09537383e-08, 1, 1.04750292e-07, -0.999999464, 2.10616111e-08, -0.00102992344)
-        task.wait(0.2)
-        fireproximityprompt(workspace.House.Spares["Shelf with Drinks"].Primary.ProximityPrompt)
-        task.wait(0.3)
-        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do      
-          if v.Name == "Drinking Glass" then
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-          end 
-        end
-        task.wait(0.3)
-        fireproximityprompt(workspace.House.Spares.WaterDispenser.Primary.ProximityPrompt)
-        task.wait(0.3)
-        plyr.CFrame = CFrame.new(-117.895195, 5.25002289, 18.4790497, 0.999891222, -4.78544626e-09, 0.0147491079, 4.7203863e-09, 1, 4.44592496e-09, -0.0147491079, -4.37581971e-09, 0.999891222)
-        task.wait(0.1)
-        fireproximityprompt(workspace.House.Rooms.Kitchen.FridgeNoodles.Primary.ProximityPrompt)
-        task.wait(0.3)
-        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-          if v.Name == "Raw Noodle" then
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+      if v:FindFirstChild("GasCan") ~= nil and v.Name == "GasCans" then
+        if workspace.Game.Baggage["Gas Cans"].Value ~= 13 then
+          plyr.CFrame = CFrame.new(-123.511528, 5.25002241, 27.6424961, -0.00102992344, -1.04728656e-07, 0.999999464, 2.09537383e-08, 1, 1.04750292e-07, -0.999999464, 2.10616111e-08, -0.00102992344)
+          task.wait(0.2)
+          fireproximityprompt(workspace.House.Spares["Shelf with Drinks"].Primary.ProximityPrompt)
+          task.wait(0.3)
+          for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do      
+            if v.Name == "Drinking Glass" then
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+            end 
           end
-        end
-        task.wait(0.3)
-        fireproximityprompt(workspace.House.Rooms.Kitchen.Stove.Primary.ProximityPrompt)
-        task.wait(0.1)
-        plyr.CFrame = CFrame.new(-156.347107, 5.25002193, 43.3183899, 0.0322994292, 1.25283828e-08, 0.999478221, -4.00183957e-08, 1, -1.12416769e-08, -0.999478221, -3.96344149e-08, 0.0322994292)
-        task.wait(0.2)
-        for i,v in pairs(game:GetService("Workspace").House.GasCans:GetDescendants()) do
-          if v.ClassName == "ProximityPrompt" then
-            fireproximityprompt(v)
+          task.wait(0.3)
+          fireproximityprompt(workspace.House.Spares.WaterDispenser.Primary.ProximityPrompt)
+          task.wait(0.3)
+          plyr.CFrame = CFrame.new(-117.895195, 5.25002289, 18.4790497, 0.999891222, -4.78544626e-09, 0.0147491079, 4.7203863e-09, 1, 4.44592496e-09, -0.0147491079, -4.37581971e-09, 0.999891222)
+          task.wait(0.1)
+          fireproximityprompt(workspace.House.Rooms.Kitchen.FridgeNoodles.Primary.ProximityPrompt)
+          task.wait(0.3)
+          for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+            if v.Name == "Raw Noodle" then
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+            end
           end
-        end
-        task.wait(0.2)
-        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-          if v.Name == "gas can" then
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+          task.wait(0.3)
+          fireproximityprompt(workspace.House.Rooms.Kitchen.Stove.Primary.ProximityPrompt)
+          task.wait(0.1)
+          plyr.CFrame = CFrame.new(-156.347107, 5.25002193, 43.3183899, 0.0322994292, 1.25283828e-08, 0.999478221, -4.00183957e-08, 1, -1.12416769e-08, -0.999478221, -3.96344149e-08, 0.0322994292)
+          task.wait(0.2)
+          for i,v in pairs(game:GetService("Workspace").House.GasCans:GetDescendants()) do
+            if v.ClassName == "ProximityPrompt" then
+              fireproximityprompt(v)
+            end
           end
-        end
-        task.wait(0.5)
-        plyr.CFrame = CFrame.new(-113.479828, 5.25002289, 64.3934937, 0.0127779888, 2.98009102e-08, -0.999918342, -4.61760514e-08, 1, 2.92132576e-08, 0.999918342, 4.57989948e-08, 0.0127779888)
-        task.wait(0.2)
-        fireproximityprompt(workspace.Game.Baggage.Store)
-        task.wait(0.2)
-        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-          if v.Name == "Cooked Noodle" then
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+          task.wait(0.2)
+          for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+            if v.Name == "gas can" then
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+            end
           end
-        end
-        task.wait(0.2)
-        fireproximityprompt(workspace.Game.Baggage.Store)
-        task.wait(0.2)
-        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-          if v.Name == "Glass of Water" then
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+          task.wait(0.2)
+          plyr.CFrame = CFrame.new(-113.479828, 5.25002289, 64.3934937, 0.0127779888, 2.98009102e-08, -0.999918342, -4.61760514e-08, 1, 2.92132576e-08, 0.999918342, 4.57989948e-08, 0.0127779888)
+          task.wait(0.2)
+          fireproximityprompt(workspace.Game.Baggage.Store)
+          task.wait(0.2)
+          for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+            if v.Name == "Cooked Noodle" then
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+            end
           end
+          task.wait(0.2)
+          fireproximityprompt(workspace.Game.Baggage.Store)
+          task.wait(0.2)
+          for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+            if v.Name == "Glass of Water" then
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+            end
+          end
+          task.wait(0.2)
+          fireproximityprompt(workspace.Game.Baggage.Store)
+          task.wait(0.1)
         end
-        task.wait(0.2)
-        fireproximityprompt(workspace.Game.Baggage.Store)
-        task.wait(0.1)
       end
       if v:FindFirstChild("GasCan") == nil and v.Name == "GasCans" then
-        plyr.CFrame = CFrame.new(-123.511528, 5.25002241, 27.6424961, -0.00102992344, -1.04728656e-07, 0.999999464, 2.09537383e-08, 1, 1.04750292e-07, -0.999999464, 2.10616111e-08, -0.00102992344)
-        task.wait(0.2)
-        fireproximityprompt(workspace.House.Spares["Shelf with Drinks"].Primary.ProximityPrompt)
-        task.wait(0.3)
-        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-          if v.Name == "Drinking Glass" then
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+        if workspace.Game.Baggage["Gas Cans"].Value == 13 then
+          plyr.CFrame = CFrame.new(-123.511528, 5.25002241, 27.6424961, -0.00102992344, -1.04728656e-07, 0.999999464, 2.09537383e-08, 1, 1.04750292e-07, -0.999999464, 2.10616111e-08, -0.00102992344)
+          task.wait(0.2)
+          fireproximityprompt(workspace.House.Spares["Shelf with Drinks"].Primary.ProximityPrompt)
+          task.wait(0.3)
+          for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+            if v.Name == "Drinking Glass" then
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+            end
           end
-        end
-        task.wait(0.3)
-        fireproximityprompt(workspace.House.Spares.WaterDispenser.Primary.ProximityPrompt)
-        task.wait(0.3)
-        plyr.CFrame = CFrame.new(-117.895195, 5.25002289, 18.4790497, 0.999891222, -4.78544626e-09, 0.0147491079, 4.7203863e-09, 1, 4.44592496e-09, -0.0147491079, -4.37581971e-09, 0.999891222)
-        task.wait(0.1)
-        fireproximityprompt(workspace.House.Rooms.Kitchen.FridgeNoodles.Primary.ProximityPrompt)
-        task.wait(0.3)
-        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-          if v.Name == "Raw Noodle" then
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+          task.wait(0.3)
+          fireproximityprompt(workspace.House.Spares.WaterDispenser.Primary.ProximityPrompt)
+          task.wait(0.3)
+          plyr.CFrame = CFrame.new(-117.895195, 5.25002289, 18.4790497, 0.999891222, -4.78544626e-09, 0.0147491079, 4.7203863e-09, 1, 4.44592496e-09, -0.0147491079, -4.37581971e-09, 0.999891222)
+          task.wait(0.1)
+          fireproximityprompt(workspace.House.Rooms.Kitchen.FridgeNoodles.Primary.ProximityPrompt)
+          task.wait(0.3)
+          for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+            if v.Name == "Raw Noodle" then
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+            end
           end
-        end
-        task.wait(0.3)
-        fireproximityprompt(workspace.House.Rooms.Kitchen.Stove.Primary.ProximityPrompt)
-        task.wait(0.1)
-        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-          if v.Name == "Cooked Noodle" then
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+          task.wait(0.3)
+          fireproximityprompt(workspace.House.Rooms.Kitchen.Stove.Primary.ProximityPrompt)
+          task.wait(0.1)
+          for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+            if v.Name == "Cooked Noodle" then
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+            end
           end
-        end
-        task.wait(0.2)
-        plyr.CFrame = CFrame.new(-113.479828, 5.25002289, 64.3934937, 0.0127779888, 2.98009102e-08, -0.999918342, -4.61760514e-08, 1, 2.92132576e-08, 0.999918342, 4.57989948e-08, 0.0127779888)
-        task.wait(0.2)
-        fireproximityprompt(workspace.Game.Baggage.Store)
-        task.wait(0.2)
-        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-          if v.Name == "Glass of Water" then
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+          task.wait(0.2)
+          plyr.CFrame = CFrame.new(-113.479828, 5.25002289, 64.3934937, 0.0127779888, 2.98009102e-08, -0.999918342, -4.61760514e-08, 1, 2.92132576e-08, 0.999918342, 4.57989948e-08, 0.0127779888)
+          task.wait(0.2)
+          fireproximityprompt(workspace.Game.Baggage.Store)
+          task.wait(0.2)
+          for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+            if v.Name == "Glass of Water" then
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+              game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+            end
           end
+          task.wait(0.2)
+          fireproximityprompt(workspace.Game.Baggage.Store)
+          task.wait(0.1)
         end
-        task.wait(0.2)
-        fireproximityprompt(workspace.Game.Baggage.Store)
-        task.wait(0.1)
       end
     end
     if getgenv().BreakLoop == true then
