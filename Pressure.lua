@@ -392,7 +392,7 @@ local function applytrickster1(inst)
   bg.Size = UDim2.fromScale(1, 1)
   bg.StudsOffset = Vector3.new(-0.5, -0.5, 0)
   bg.AlwaysOnTop = true
-  local f = Instance.new("Frame", text)
+  local f = Instance.new("Frame", bg)
   f.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
   f.Size = UDim2.fromScale(2,2)
   f.ZIndex = 5
@@ -880,22 +880,23 @@ local Toggle = Tabs.Main:AddToggle("Avoid Monster V1",
         avoid = workspace.ChildAdded:Connect(function(v)
           if v.Name == "Angler" or v.Name == "Pinkie" or v.Name == "Chainsmoker" or v.Name == "Blitz" or v.Name == "Froger" or v.Name == "Pandemonium" or v.Name == "RidgeAngler" or v.Name == "RidgePinkie" or v.Name == "RidgeChainsmoker" or v.Name == "RidgeBlitz" or v.Name == "RidgeFroger" then
             local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-            task.spawn(function()
-              while wait() do
-                task.wait(0.5)
+            tp = game:GetService("RunService").Heartbeat:Connect(function()
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.NevcitPart.CFrame
-                if v == nil then
-                  break
-                end
-              end
             end)
             v.Destroying:Wait()
+            tp:Disconnect()
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldpos
           end
         end)
       end
       if state == false then
         avoid:Disconnect()
+        tp:Disconnect()
+        for _, v in ipairs(workspace:GetChildren()) do
+          if v.Name == "NevcitPart" and v.ClassName == "Part" then
+            v:Destroy()              
+          end
+        end
       end
   end
 })
@@ -1454,7 +1455,7 @@ local Toggle = esp:AddToggle("ESP Monster Locker (Laggy)",
     Callback = function(state)
       if state == true then
         destroylocker = workspace.Rooms.ChildAdded:Connect(function()
-          for _, v in ipairs(workspace.Rooms:GetDescendants()) do
+          for i, v in pairs(workspace.Rooms:GetDescendants()) do
             if v.Name == "NevcitLocker" then
               v:Destroy()
             end
@@ -1517,7 +1518,7 @@ local Toggle = esp:AddToggle("ESP Fake Door (Laggy)",
 local Toggle = esp:AddToggle("ESP Door (Laggy)", 
 {
     Title = "ESP Door", 
-    Description = "Normal Door",
+    Description = "",
     Default = false,
     Callback = function(state)
       if state == true then
