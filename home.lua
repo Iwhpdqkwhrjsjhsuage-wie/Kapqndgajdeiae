@@ -35,12 +35,10 @@ getgenv().Questch2 = nil
 --------- LOCAL FUNCTION CHAPTER 3
 
 local function autostore()
-  getgenv().BreakLoop = false
-  while true do
-    task.wait(0.1)
+  while wait() do
     local plyr = game.Players.LocalPlayer.Character.HumanoidRootPart
     for i, v in pairs(workspace.House:GetDescendants()) do
-      if v:FindFirstChild("GasCan") ~= nil then    
+      if v:FindFirstChild("GasCan") ~= nil and v.Name == "GasCans" then    
         plyr.CFrame = CFrame.new(-123.511528, 5.25002241, 27.6424961, -0.00102992344, -1.04728656e-07, 0.999999464, 2.09537383e-08, 1, 1.04750292e-07, -0.999999464, 2.10616111e-08, -0.00102992344)
         task.wait(0.2)
         fireproximityprompt(workspace.House.Spares["Shelf with Drinks"].Primary.ProximityPrompt)
@@ -100,7 +98,7 @@ local function autostore()
         fireproximityprompt(workspace.Game.Baggage.Store)
         task.wait(0.1)
       end
-      if v:FindFirstChild("GasCan") == nil then
+      if v:FindFirstChild("GasCan") == nil and v.Name == "GasCans" then
         plyr.CFrame = CFrame.new(-123.511528, 5.25002241, 27.6424961, -0.00102992344, -1.04728656e-07, 0.999999464, 2.09537383e-08, 1, 1.04750292e-07, -0.999999464, 2.10616111e-08, -0.00102992344)
         task.wait(0.2)
         fireproximityprompt(workspace.House.Spares["Shelf with Drinks"].Primary.ProximityPrompt)
@@ -125,6 +123,12 @@ local function autostore()
         task.wait(0.3)
         fireproximityprompt(workspace.House.Rooms.Kitchen.Stove.Primary.ProximityPrompt)
         task.wait(0.1)
+        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+          if v.Name == "Cooked Noodle" then
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+          end
+        end
+        task.wait(0.2)
         plyr.CFrame = CFrame.new(-113.479828, 5.25002289, 64.3934937, 0.0127779888, 2.98009102e-08, -0.999918342, -4.61760514e-08, 1, 2.92132576e-08, 0.999918342, 4.57989948e-08, 0.0127779888)
         task.wait(0.2)
         fireproximityprompt(workspace.Game.Baggage.Store)
@@ -240,6 +244,7 @@ local Toggle = Tabs.Main:AddToggle("Auto Store",
         autostore()
       end
       if state == false then
+        getgenv().BreakLoop = true
         BreakLoop()
       end
     end 
