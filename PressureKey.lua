@@ -83,7 +83,7 @@ elseif response ~= trueData or getgenv().UseKey or getgenv().KeyMode or getgenv(
   })
 end
 
-repeat task.wait() until correct and getgenv().Nevcit
+repeat task.wait() until correct and getgenv().Nevcit and not getgenv().UseKey and not getgenv().KeyMode and not getgenv().AllowAnyKey
 for _, gui in ipairs(game:GetService("CoreGui"):GetChildren()) do
     if gui.Name == "FLUENT" then
       gui:Destroy()
